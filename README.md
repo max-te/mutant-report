@@ -17,6 +17,7 @@ The result is an executable `dist/converter`.
 ## Usage
 
 Run cargo-mutants on your Rust project. For test information in the report it is recommended to run the mutation tests with nextest and with the environment variables `NEXTEST_EXPERIMENTAL_LIBTEST_JSON=1 NEXTEST_MESSAGE_FORMAT=libtest-json`.
+(Alternatively, if nextest is not an option, with `cargo +nightly mutants -- -- --format json -Z unstable-options`.)
 You should have a `mutants.out` directory in your project folder.
 Now, run the `converter serve` from the project folder. This will serve the report on port 3000.
 
