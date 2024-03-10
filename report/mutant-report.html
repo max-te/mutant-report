@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mutation test report</title>
+</head>
+
+<body>
+    <script defer src="./mutant-report.js"></script>
+    <div id="app"></div>
+    <style type="text/css">
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #18181b;
+            }
+        }
+
+        body:has([theme="dark"]) {
+            background-color: #18181b;
+        }
+
+        body:has([theme="light"]) {
+            background-color: #fff;
+        }
+    </style>
+</body>
+
+</html>

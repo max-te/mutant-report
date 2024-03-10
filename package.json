@@ -1,0 +1,20 @@
+{
+  "name": "mutant-report-convert",
+  "module": "converter/index.ts",
+  "type": "module",
+  "scripts": {
+    "compile": "bun build converter/index.ts --compile --outfile dist/converter"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "mutation-testing-elements": "./vendor/mutation-testing-elements",
+    "mutation-testing-report-schema": "^3.0.2",
+    "prismjs": "^1.29.0"
+  },
+  "license": "MIT"
+}
