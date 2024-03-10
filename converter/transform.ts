@@ -34,11 +34,18 @@ export async function transformReport(input: LabOutcome): Promise<MutationTestRe
                 } catch {
                     return [];
                 }
-            }).filter(line => typeof line == "object" && "type" in line && line.type == "test" && "event" in line && line.event == "started" && "name" in line);
+            }).filter(line => typeof line == "object" && "type" in line && line.type == "test" && "event" in line && line.event == "started" && "name" in line && typeof line.name === "string");
             testEvents.forEach(line => {
-                const testParts = (line.name as string).split(/::|\$/g);
-                const module = testParts.slice(0, testParts.length - 1).join('/');
-                const name = testParts[testParts.length - 1];
+                let module, name: String;
+                if (line.name.includes(" - ")) {
+                    // Doctest
+                    [module, name] = line.name.split(" - ", 2);
+                } else {
+                    const testParts = line.name.split(/::|\$/g);
+                    module = testParts.slice(0, testParts.length - 1).join('/');
+                    name = testParts[testParts.length - 1];
+                }
+                module ||= "- unknown module -";
                 output.testFiles![module] ??= {
                     tests: []
                 };
